@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.listDogs{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.listDogs li{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: chocolate;
+  border-radius: 10px;
+}

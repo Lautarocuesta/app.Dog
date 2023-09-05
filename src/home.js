@@ -5,7 +5,7 @@ import { useState } from "react";
 function Home() {
   const [dogs, setDogs] = useState([]);
   const [formData, setFormData] = useState({
-    size: 0,
+    size: "",
     shedding: false,
     energy: 0,
     protectiveness: 0,
@@ -16,7 +16,7 @@ function Home() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const getDogs = () => {
+  const getDogs = (event) => {
     event.preventDefault();
 
     //calcular datos a partir del formulario:
@@ -37,18 +37,19 @@ function Home() {
         //---
         break;
     }
+    
 
     axios.get("https://api.api-ninjas.com/v1/dogs", {
-      headers: {'X-Api-Key': 'PON LA APIKEY'},
+      headers: {'X-Api-Key': 'PON TU APIKEY'},
       params: {
-        min_height: 0,
-        max_height: 100,
-        shedding: 3,
-        barking: 3,
-        energy: 3,
-        protectiveness: 3,
-        trainability: 3,
-        price: $1
+        //min_height: 35,
+        //max_height: 70,
+        //shedding: 5,
+        //barking: 5,
+        //energy: 5,
+        //protectiveness: 5,
+        trainability: 1,
+        //price: $1
       }
     })
       .then((response) => setDogs(response.data))
@@ -58,11 +59,10 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>wellcum to home</h1>
+        <h1>home {"{good}"}</h1>
         <form className="dog-form" onSubmit={getDogs}>
           <label htmlFor="size">Tamaño: </label>
-          <input type="range" id="size" name="size"
-            // value={userData.firstName}
+          <input type="range" max="5" id="size" name="size"
             onChange={handleChange}
             // required
           />
@@ -98,6 +98,11 @@ function Home() {
           <button type="submit">Registrar</button>
         </form>
       </header>
+      <div>
+        <ul className="listDogs">
+          {dogs.map((p) => <li><img src={p.image_link}/><p>{p.name}</p></li>)}
+        </ul>
+      </div>
     </div>
   );
 }
