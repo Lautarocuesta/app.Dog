@@ -1,0 +1,75 @@
+/* App.css (or a separate CSS file) */
+
+/* Header Styles */
+.App-header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  /* Form Styles */
+  .dog-form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Dog List Styles */
+  .listDogs {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .listDogs li {
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .listDogs img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .listDogs p {
+    margin-top: 5px;
+  }
+  
