@@ -44,7 +44,7 @@ function Home() {
     
 
     axios.get("https://api.api-ninjas.com/v1/dogs", {
-      headers: {'X-Api-Key': 'OvGYJdgkt/MnEjd5LZsqpQ==NYJvmG1NRqGTTWRl'},
+      headers: {'X-Api-Key': 'OvGYJdgkt/MnEjd5LZsqpQ==NYJvmG1NRqGTTWRl'},    //no nos baneen
       params: {
         min_height: min_height,
         max_height: max_height,
