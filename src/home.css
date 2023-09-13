@@ -1,28 +1,33 @@
 /* App.css (or a separate CSS file) */
-
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
 /* Header Styles */
+
+
 .App-header {
-    background-color: #333;
-    color: white;
+  font-family: "Comfortaa";
+background-color: #333;
+    color: rgb(68, 68, 68);
     padding: 20px;
     text-align: center;
+    font-size: 22px;
   }
   
   .title {
     font-size: 2rem;
+    color: #f3933a;
   }
   
   /* Form Styles */
   .dog-form {
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f3933a;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 80%;
     max-width: 400px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 10px;
@@ -71,5 +76,12 @@
   
   .listDogs p {
     margin-top: 5px;
+  }
+
+  .radios{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
   }
   
