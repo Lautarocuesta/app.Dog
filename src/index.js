@@ -5,8 +5,9 @@ import Register from "./register";
 import Home from "./home";
 //import Contact from "./contact";
 import Navbar from "./navbar";
+import Dogcard from "./dogCard";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Route path="/" element={<Navbar />}>
           <Route index element={<Home />} />
           <Route path="register" element={<Register />} />
+          <Route path="description/:dogname" element={<Dogcard/>}/>
           {/* <Route path="contact" element={<Contact />} /> */}
         </Route>
       </Routes>

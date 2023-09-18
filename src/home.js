@@ -4,7 +4,6 @@ import { useState } from "react";
 import Dogcard from "./dogCard";
 import "./home.css"
 
-
 function Home() {
   const [ignore, setIgnore] = useState({
     "ignore_energy": false,
@@ -13,11 +12,11 @@ function Home() {
   });
   const [dogs, setDogs] = useState([]);
   const [formData, setFormData] = useState({
-    size: "",
+    size: "0",
     shedding: "noImporta",
-    energy: 0,
-    protectiveness: 0,
-    trainability: 0
+    energy: "5",
+    protectiveness: "5",
+    trainability: "5"
   });
 
   const handleChange = (event) => {
@@ -25,29 +24,29 @@ function Home() {
   };
 
   const ocult = (event) => {
-    setIgnore({ ...ignore, [event.target.name]: event.target.value });
+    setIgnore({ ...ignore, [event.target.name]: !ignore[event.target.name]});
   }
 
   const getDogs = (event) => {
     event.preventDefault();
 
     //calcular datos a partir del formulario:
-    let min_height, max_height;
+    let minHeight, maxHeight;
   
   
     //tamaño del perro (altura en pulgadas)
     switch(formData.size){
-      case 0: 
-        min_height = 0;
-        max_height = 10;
+      case "0": 
+        minHeight = 0;
+        maxHeight = 10;
         break;
-      case 1:
-        min_height = 10;
-        max_height = 20;
+      case "1":
+        minHeight = 10;
+        maxHeight = 20;
         break;
-      case 2:
-        min_height = 20;
-        max_height = 35;
+      case "2":
+        minHeight = 20;
+        maxHeight = 35;
         break;
     }
 
@@ -55,12 +54,12 @@ function Home() {
     axios.get("https://api.api-ninjas.com/v1/dogs", {
       headers: {'X-Api-Key': 'OvGYJdgkt/MnEjd5LZsqpQ==NYJvmG1NRqGTTWRl'},    //no nos baneen
       params: {
-        min_height: min_height,
-        max_height: max_height,
+        min_height: minHeight,
+        max_height: maxHeight,
         //barking: 5,
-        energy: dogs.energy,
-        //protectiveness: 5,
-        //trainability: 5,
+        energy: ignore.ignore_energy ? undefined:formData.energy,
+        protectiveness: ignore.ignore_protec ? undefined:formData.protectiveness,
+        trainability: ignore.ignore_train ? undefined:formData.trainability
         //price: $1
       }
     })
@@ -69,7 +68,7 @@ function Home() {
 
 
       if(formData.shedding == "importa"){
-        setDogs(dogs.filter((e) => e.shedding < 3))
+        setDogs(dogs.filter((e) => e.shedding == 3))
       } 
   };
 
@@ -77,19 +76,19 @@ function Home() {
     <div className="App">
       <header className="App-header">
         <h1 className="title">Encuentra a tu perro ideal</h1><br />
+        <img src="perro1.png" />
         <form className="dog-form" onSubmit={getDogs}>
           <label htmlFor="size">Tamaño: </label>
-          <select onChange={handleChange}>
+          <select name="size" className="size" onChange={handleChange}>
               <option value="0">Pequeño</option>
               <option value="1">Mediano</option>
               <option value="2">Grande</option>
-          </select>
-          <br />
-          <label htmlFor="shedding">Cuanto pelo arroja la raza:</label>
+          </select><br />
 
+          <label htmlFor="shedding">Cuanto pelo arroja la raza:</label>
           <div className="radios">
-            <input type="radio" value="importa" className="shedding" onChange={handleChange}/><label>Suelta poco pelo</label>
-            <input type="radio" value="noImporta" className="shedding" onChange={handleChange}/><label>No me importa</label>
+            <input type="radio" name="shedding" value="importa" className="shedding" onChange={handleChange}/><label>Suelta poco pelo</label>
+            <input type="radio" name="shedding" value="noImporta" className="shedding" onChange={handleChange} checked/><label>No me importa</label>
           </div>
           <br />
 
@@ -109,6 +108,7 @@ function Home() {
           <br />
 
           <button type="submit">Buscar Perro</button>
+          <img src="perro2.png" width="300" height="300" />
         </form>
       </header>
           <Dogcard dogs={dogs}/>
