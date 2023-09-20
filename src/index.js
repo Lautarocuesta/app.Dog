@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Register from "./register";
 import Home from "./home";
-//import Contact from "./contact";
+import Contact from "./contact";
 import Navbar from "./navbar";
 import Dogcard from "./dogCard";
 import reportWebVitals from "./reportWebVitals";
@@ -18,7 +18,7 @@ root.render(
           <Route index element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="description/:dogname" element={<Dogcard/>}/>
-          {/* <Route path="contact" element={<Contact />} /> */}
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -63,13 +63,14 @@ function Home() {
         //price: $1
       }
     })
-      .then((response) => setDogs(response.data))
+      .then((response) => {
+        setDogs(response.data);
+        if(formData.shedding == "importa") setDogs(dogs.filter((e) => e.shedding == 3));
+      })
       .catch((error) => console.error(`Error: ${error}`));    
 
 
-      if(formData.shedding == "importa"){
-        setDogs(dogs.filter((e) => e.shedding == 3))
-      } 
+      
   };
 
   return (
