@@ -90,10 +90,14 @@ button[type="submit"] {
 }
 
 .size{
+  width: 140px;
+  height: 30px;
   background-color: #525252;
   font-family: "Comfortaa";
   color: #f3b23a;
   border: none;
   border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
   
